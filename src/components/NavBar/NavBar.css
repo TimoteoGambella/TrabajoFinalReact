@@ -78,3 +78,10 @@
     background-color: #084444;
     color: #c7e5e3 !important;
   }
+
+.Cart-fixed{
+  position: fixed;
+  right: 0;
+  margin-right: 20px;
+  margin-top: -40px;
+}

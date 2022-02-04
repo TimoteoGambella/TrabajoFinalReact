@@ -1,6 +1,7 @@
 import React from 'react';
 import './NavBar.css';
 import logo from './rose.png';
+import CartWidget from './CartWidget';
 
 function NavBar(){
     return(
@@ -28,6 +29,7 @@ function NavBar(){
                         <a className="nav-link" href="refill.html">Refill</a>
                     </div>
                 </div>
+                <CartWidget />
             </nav>
         </header>
     );
