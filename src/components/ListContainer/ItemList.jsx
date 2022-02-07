@@ -1,12 +1,11 @@
 import React from 'react';
 import "./ItemList.css"
-function ItemListContainer(props){
+
+export default function ItemListContainer({text,title}){
     return(
         <div  className="ItemList">
-            <p className="TitleItemList">{props.title}</p>
-            <p className="Item">{props.text}</p>
+            <p className="TitleItemList">{title}</p>
+            <p className="Item">{text}</p>
         </div>
     )
 }
-
-export default ItemListContainer

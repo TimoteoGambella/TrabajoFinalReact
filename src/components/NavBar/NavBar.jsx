@@ -3,7 +3,7 @@ import './NavBar.css';
 import logo from './rose.png';
 import CartWidget from './CartWidget';
 
-function NavBar(){
+export default  function NavBar(){
     return(
         <header>
             <div className="cabecero" id="cabecero">
@@ -34,5 +34,3 @@ function NavBar(){
         </header>
     );
 }
-
-export default NavBar;
