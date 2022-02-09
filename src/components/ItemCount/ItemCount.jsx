@@ -3,9 +3,9 @@ import "./ItemCount.css"
 import signoMas from "./mas.png"
 import signoMenos from "./menos.png"
 
-export default function ItemCount(numberStock){
+export default function ItemCount({numberStock}){
     const [contador, setContador]=useState(1)
-    const stock = 5
+    const stock = numberStock
     console.log(stock)
 
     useEffect(()=>{
