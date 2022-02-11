@@ -1,0 +1,18 @@
+[
+    {
+        "name":"timi",
+        "img":"./imgListItem/bombon.png"
+    },
+    {
+        "name":"valen",
+        "img":"./imgListItem/difusor.png"
+    },
+    {
+        "name":"guille",
+        "img":"./imgListItem/homespray.png"
+    },
+    {
+        "name":"marie",
+        "img":"./imgListItem/vela.png"
+    }
+]
