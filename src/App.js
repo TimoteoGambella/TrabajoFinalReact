@@ -7,10 +7,8 @@ function App() {
   return (
     <React.Fragment>
         <NavBar />
-        <ItemListContainer text="HOLA COMO ESTAN ME LLAMO TIMOTEO GAMBELLA Y SOY PROGRAMADOR" title="TIMOTEO" />
-        <ItemListContainer text="ESTE ES EL CURSO DE REACT JS Y ESTA ES UNA PRUEBA DE COMPONENTES" title="PROGRAMACION" />
+        <ItemListContainer/>
     </React.Fragment>
-
   );
 }
 

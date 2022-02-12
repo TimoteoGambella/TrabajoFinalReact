@@ -1,18 +1,30 @@
 [
     {
-        "name":"timi",
-        "img":"./imgListItem/bombon.png"
+        "name":"VELA",
+        "img":"./imgListItem/vela.png",
+        "description":"Velas de soja aromatizadas y naturales",
+        "stock":5,
+        "precioUnidad":300
     },
     {
-        "name":"valen",
-        "img":"./imgListItem/difusor.png"
+        "name":"HOMESPRAY",
+        "img":"./imgListItem/difusor.png",
+        "description":"Perfumes para ambientes y textiles",
+        "stock":7,
+        "precioUnidad":420
     },
     {
-        "name":"guille",
-        "img":"./imgListItem/homespray.png"
+        "name":"DIFUSOR",
+        "img":"./imgListItem/homespray.png",
+        "description":"Aromatizantes con varillas",
+        "stock":2,
+        "precioUnidad":500
     },
     {
-        "name":"marie",
-        "img":"./imgListItem/vela.png"
+        "name":"BOMBON",
+        "img":"./imgListItem/bombon.png",
+        "description":"Bombones de soja ideales para baños y decoraciones",
+        "stock":13,
+        "precioUnidad":110
     }
 ]

@@ -1,16 +1,12 @@
 .ItemCount-container{
     display: flex;
-    width: 350px;
-    margin: 30px auto;
-    text-align: center;
-    justify-content: center;
+    width: 100%;
 }
 .ItemCount-img{
-    width: 2vw;
-    height: 2vw;
-    margin: auto 15px;
+    transform: scale(0.4);
 }
 .ItemCount-p{
-    margin: 10px 80px;
-    font-size: 2.5vw;
+    margin: auto;
+    font-size: 2vw;
+    width: 700px;
 }

@@ -1,27 +1,21 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import "./ItemList.css"
 import ItemCount from '../ItemCount/ItemCount';
 import baseDeDatos from "../ListContainer/productos.json"
 
-export default function ItemListContainer({text,title}){
-
-    
-    useEffect(()=>{
-        console.log("hola")
-        for(var producto of baseDeDatos){
-            var PhotoNumber=producto.img
-            console.log(PhotoNumber)
-        }        
-    },[])
-
+export default function ItemListContainer(){
     return(
-            <div>
-                <img src={baseDeDatos[0].img} alt="fe" />
-                <div  className="ItemList">
-                    <p className="TitleItemList">{baseDeDatos[0].name}</p>
-                    <p className="Item">{text}</p>
-                </div>
-                <ItemCount numberStock={5} initial={1}/>
+        <div className='itemContainer'>
+            {baseDeDatos.map((prod)=>
+            <div className='itemContainer-prod'>
+                <img src={prod.img} alt={prod.name} />
+                    <p className="ItemTitle">{prod.name}</p>
+                    <p className="Item">{prod.description}</p>
+                    <p className='ItemPrice'>$ {prod.precioUnidad}</p>
+                <ItemCount numberStock={prod.stock} initial={1}/>
+                <button>AGREGAR</button>
             </div>
+            )}
+        </div>
     )
 }
