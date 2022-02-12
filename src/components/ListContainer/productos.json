@@ -1,5 +1,6 @@
 [
     {
+        "id":0,
         "name":"VELA",
         "img":"./imgListItem/vela.png",
         "description":"Velas de soja aromatizadas y naturales",
@@ -7,6 +8,7 @@
         "precioUnidad":300
     },
     {
+        "id":1,
         "name":"HOMESPRAY",
         "img":"./imgListItem/difusor.png",
         "description":"Perfumes para ambientes y textiles",
@@ -14,6 +16,7 @@
         "precioUnidad":420
     },
     {
+        "id":2,
         "name":"DIFUSOR",
         "img":"./imgListItem/homespray.png",
         "description":"Aromatizantes con varillas",
@@ -21,6 +24,7 @@
         "precioUnidad":500
     },
     {
+        "id":3,
         "name":"BOMBON",
         "img":"./imgListItem/bombon.png",
         "description":"Bombones de soja ideales para baños y decoraciones",

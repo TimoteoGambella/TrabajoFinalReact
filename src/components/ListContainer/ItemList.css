@@ -32,22 +32,17 @@
 .itemContainer p{
     font-family: "Montserrat", sans-serif;
 }
-
-/* .ItemList{
-    background-color: cadetblue;
-    text-align: center;
-    margin: 0 auto;
-    border: 3px solid black;
-    max-width: 300px;
-    margin-bottom: 20px;
-}
-.TitleItemList{
-    font-family: cursive;
-    font-size: 2vw;
-    font-weight: 700;
-}
-.Item{
-    font-family: "Montserrat", sans-serif;
-    font-size: 1vw;
+.ItemButton{
+    margin: 10px;
+    width: 100px;
+    border: 1px solid black;
+    background-color: #489696;
+    border-radius: 10px;
     font-weight: 600;
-} */
+}
+.ItemButton:hover{
+    background-color: rgb(225, 238, 238);
+    color: #489696;
+}
+
+

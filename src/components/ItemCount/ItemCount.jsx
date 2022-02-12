@@ -2,8 +2,9 @@ import React, {useState, useEffect} from 'react';
 import "./ItemCount.css"
 import signoMas from "./mas.png"
 import signoMenos from "./menos.png"
+import baseDeDatos from "../ListContainer/productos.json"
 
-export default function ItemCount({initial,numberStock}){
+export default function ItemCount({initial,numberStock,keyId}){
     const [contador, setContador]=useState(initial)
     const [impar, setImpar]=useState(false)
     const stock = numberStock
@@ -33,6 +34,19 @@ export default function ItemCount({initial,numberStock}){
             <img src={signoMenos} className='ItemCount-img' onClick={ClickResta}></img>
             <p className='ItemCount-p'>{contador}</p>
             <img src={signoMas} className='ItemCount-img' onClick={ClickSuma}></img>
+            <button className="ItemButton" onClick={
+                ()=>{
+                        console.log(`
+                            ID: ${baseDeDatos[keyId].id}
+                            NAME: ${baseDeDatos[keyId].name}
+                            DESCRIPTION: ${baseDeDatos[keyId].description}
+                            STOCK: ${baseDeDatos[keyId].stock}
+                            PRICE: ${baseDeDatos[keyId].precioUnidad}`)
+                            console.log(`
+                            CANTIDAD A COMPRAR: ${contador}
+                            VALOR TOTAL: ${contador*baseDeDatos[keyId].precioUnidad}`)
+                }
+            }>AGREGAR</button>
         </div>
     )
 }
