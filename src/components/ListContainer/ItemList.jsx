@@ -1,9 +1,16 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import "./ItemList.css"
 import ItemCount from '../ItemCount/ItemCount';
 import baseDeDatos from "../ListContainer/productos.json"
 
 export default function ItemListContainer(){
+
+
+    const prodPromise = new Promise((resolve,eject)=>{
+        setTimeout(() => {
+            resolve(true)
+        }, 2000);
+    })
 
     return(
         <div className='itemContainer'>
