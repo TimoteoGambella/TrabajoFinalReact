@@ -79,10 +79,30 @@
     color: #c7e5e3 !important;
   }
 
+.Cart{
+  margin-right: 30px;
+  margin-top: -22px;
+  width: 40px;
+}
+
+.navbar-fixed{
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 1.4vw;
+  background-color: #dee6e6;
+  padding-top: 15px;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
 .Cart-fixed{
   position: fixed;
   right: 0;
+  top: 0;
   margin-right: 30px;
-  margin-top: -22px;
+  margin-top: 15px;
+  z-index: 1;
   width: 40px;
 }

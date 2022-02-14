@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './NavBar.css';
 import logo from './rose.png';
 import CartWidget from './CartWidget';
 
 export default  function NavBar(){
+
     return(
         <header>
             <div className="cabecero" id="cabecero">
@@ -15,7 +16,7 @@ export default  function NavBar(){
                 </div>
                 <a href="index.html"><h1 className="tituloD">AROMAS</h1></a>
             </div>
-            <nav className="navbar navbar-expand-lg navbar-light">
+            <nav className="navbar navbar-expand-lg navbar-light" id='navBar'>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <a className="navbar-brand" href="index.html" id="referenciaMenu">Inicio</a>
                     <span className="navbar-toggler-icon"></span>
@@ -34,3 +35,15 @@ export default  function NavBar(){
         </header>
     );
 }
+
+window.onscroll = function() {
+    var y = window.scrollY;
+    console.log(y)
+    if(y>195){
+        document.getElementById("navBar").className="navbar-fixed navbar-expand-lg navbar-light"
+        document.getElementById("Cart-fixed").className="Cart-fixed"
+    }else{
+        document.getElementById("navBar").className="navbar navbar-expand-lg navbar-light"
+        document.getElementById("Cart-fixed").className="Cart"
+    }
+  };

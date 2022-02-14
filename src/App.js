@@ -8,6 +8,7 @@ function App() {
     <React.Fragment>
         <NavBar />
         <ItemListContainer/>
+        <ItemListContainer/>
     </React.Fragment>
   );
 }
