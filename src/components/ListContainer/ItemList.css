@@ -22,15 +22,20 @@
     font-family: cursive;
     font-size: 2vw;
     font-weight: 900;
+    height: 82px;
+    max-height: 82px;
+    margin: 0;
 }
 .Item{
-    min-height: 60px;
+    height: 100px;
     font-size: 1.2vw;
     font-weight: 600;
-    max-height: 60px;
+    max-height: 100px;
+    margin: 0;
 }
 .ItemPrice{
     font-weight: 600;
+    margin: 0;
 }
 .itemContainer p{
     font-family: "Montserrat", sans-serif;
