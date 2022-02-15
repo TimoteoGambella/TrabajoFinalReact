@@ -38,7 +38,6 @@ export default  function NavBar(){
 
 window.onscroll = function() {
     var y = window.scrollY;
-    console.log(y)
     if(y>195){
         document.getElementById("navBar").className="navbar-fixed navbar-expand-lg navbar-light"
         document.getElementById("Cart-fixed").className="Cart-fixed"

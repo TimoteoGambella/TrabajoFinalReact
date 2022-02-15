@@ -30,5 +30,13 @@
         "description":"Bombones de soja ideales para baños y decoraciones",
         "stock":13,
         "precioUnidad":110
+    },
+    {
+        "id":4,
+        "name":"BOMBON ESPECIAL",
+        "img":"./imgListItem/bombon.png",
+        "description":"Bombones de soja ideales para baños y decoraciones. Extra aroma",
+        "stock":9,
+        "precioUnidad":150
     }
 ]
