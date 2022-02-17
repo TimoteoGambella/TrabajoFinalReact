@@ -4,6 +4,7 @@
         "name":"VELA",
         "img":"./imgListItem/vela.png",
         "description":"Velas de soja aromatizadas y naturales",
+        "descriptionExtra":"lorem sadn sadosa dsad bsaiudb ajsdas daskd bsa jdsai dsaj dsa dñoiahwd da dskajsdhbv a wdiluwdq jk saduud wqud qwdiq dubwqdo q",
         "stock":5,
         "precioUnidad":300
     },
@@ -12,6 +13,7 @@
         "name":"HOMESPRAY",
         "img":"./imgListItem/difusor.png",
         "description":"Perfumes para ambientes y textiles",
+        "descriptionExtra":"lorem sadn sadosa dsad bsaiudb ajsdas daskd bsa jdsai dsaj dsa dñoiahwd da dskajsdhbv a wdiluwdq jk saduud wqud qwdiq dubwqdo q",
         "stock":7,
         "precioUnidad":420
     },
@@ -20,6 +22,7 @@
         "name":"DIFUSOR ESPECIAL",
         "img":"./imgListItem/homespray.png",
         "description":"Aromatizantes con varillas",
+        "descriptionExtra":"lorem sadn sadosa dsad bsaiudb ajsdas daskd bsa jdsai dsaj dsa dñoiahwd da dskajsdhbv a wdiluwdq jk saduud wqud qwdiq dubwqdo q",
         "stock":2,
         "precioUnidad":500
     },
@@ -28,6 +31,7 @@
         "name":"BOMBON",
         "img":"./imgListItem/bombon.png",
         "description":"Bombones de soja ideales para baños y decoraciones",
+        "descriptionExtra":"lorem sadn sadosa dsad bsaiudb ajsdas daskd bsa jdsai dsaj dsa dñoiahwd da dskajsdhbv a wdiluwdq jk saduud wqud qwdiq dubwqdo q",
         "stock":13,
         "precioUnidad":110
     },
@@ -36,6 +40,7 @@
         "name":"BOMBON ESPECIAL",
         "img":"./imgListItem/bombon.png",
         "description":"Bombones de soja ideales para baños y decoraciones. Extra aroma",
+        "descriptionExtra":"lorem sadn sadosa dsad bsaiudb ajsdas daskd bsa jdsai dsaj dsa dñoiahwd da dskajsdhbv a wdiluwdq jk saduud wqud qwdiq dubwqdo q",
         "stock":9,
         "precioUnidad":150
     }

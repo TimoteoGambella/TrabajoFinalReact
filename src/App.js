@@ -1,13 +1,11 @@
 import React from 'react';
-import NavBar from './components/NavBar/NavBar'
-import ItemListContainer from './components/ListContainer/ItemList';
+import Pages from './components/pages/Pages';
 
 function App() {
 
   return (
     <React.Fragment>
-        <NavBar />
-        <ItemListContainer/>
+        <Pages/>
     </React.Fragment>
   );
 }

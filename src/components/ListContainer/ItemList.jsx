@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import "./ItemList.css"
 import ItemCount from '../ItemCount/ItemCount';
 import baseDeDatos from "../ListContainer/productos.json"
+import {Link} from 'react-router-dom';
+
 
 export default function ItemListContainer(){
     
@@ -19,17 +21,21 @@ export default function ItemListContainer(){
 
     const [info, setInfo] = useState(true)
     const mensaje = "Cargando..."
-    
+
+
         return(
             <>{info ? (<p className="ItemTitle-center">{mensaje}</p>
             ) : (
                 <div className='itemContainer'>
                     {productos.map((prod)=>
                     <div className='itemContainer-prod' key={prod.id}>
-                        <img src={prod.img} alt={prod.name} />
-                            <p className="ItemTitle">{prod.name}</p>
-                            <p className="Item">{prod.description}</p>
-                            <p className='ItemPrice'>$ {prod.precioUnidad}</p>
+                        <img src={prod.img} alt={prod.name}/>
+                        <p className="ItemTitle">{prod.name}</p>
+                        <p className="Item">{prod.description}</p>
+                        <p className='ItemPrice'>$ {prod.precioUnidad}</p>
+                        <Link to={`/ItemDetails/${prod.id}`}>
+                            <button className='BotonDetalles'>DETALLES</button>
+                        </Link>
                         <ItemCount numberStock={prod.stock} initial={1} keyId={prod.id}/>
                     </div>
                     )}
