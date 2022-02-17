@@ -31,9 +31,9 @@ export default function ItemCount({initial,numberStock,keyId}){
 
     return(
         <div className='ItemCount-container' style={{border:`3px solid ${impar?"#00000026" : "#00000075"}`}}>
-            <img src={signoMenos} className='ItemCount-img' onClick={ClickResta}></img>
+            <img src={signoMenos} className='ItemCount-img' onClick={ClickResta}/>
             <p className='ItemCount-p'>{contador}</p>
-            <img src={signoMas} className='ItemCount-img' onClick={ClickSuma}></img>
+            <img src={signoMas} className='ItemCount-img' onClick={ClickSuma}/>
             <button className="ItemButton" onClick={
                 ()=>{
                         console.log(`
