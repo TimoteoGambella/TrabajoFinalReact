@@ -14,12 +14,13 @@ export default function PageTienda(){
         }else{
             const i = document.getElementById("navBar")
             const ii = document.getElementById("Cart-fixed")
-            if(i&ii){
+            if(i,ii){
                 i.className="navbar navbar-expand-lg navbar-light"
                 ii.className="Cart"
             }
         }
     };
+    
     return(
         <React.Fragment>
             <NavBar />
