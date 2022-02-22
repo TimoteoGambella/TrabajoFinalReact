@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import "./ItemCount.css"
 import signoMas from "./mas.png"
 import signoMenos from "./menos.png"
-import baseDeDatos from "../ListContainer/productos.json"
+import baseDeDatos from "../ItemListContainer/productos.json"
 
 export default function ItemCount({initial,numberStock,keyId}){
     const [contador, setContador]=useState(initial)

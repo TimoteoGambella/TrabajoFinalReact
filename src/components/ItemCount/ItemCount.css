@@ -1,6 +1,7 @@
 .ItemCount-container{
     display: flex;
-    width: 100%;
+    width: 50%;
+    margin: auto;
 }
 .ItemCount-img{
     transform: scale(0.4);

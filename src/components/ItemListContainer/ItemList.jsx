@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import "./ItemList.css"
-import baseDeDatos from "../ListContainer/productos.json"
-import Items from '../Items/Items';
+import baseDeDatos from "./productos.json"
+import ItemList from '../ItemList/ItemList';
 
 export default function ItemListContainer(){
 
@@ -25,7 +25,7 @@ export default function ItemListContainer(){
         return(
             <>{info ? (<p className="ItemTitle-center">{mensaje}</p>
                 ) : (
-                    <Items productos={productos}/>
+                    <ItemList productos={productos}/>
                 )}
             </>
         )
