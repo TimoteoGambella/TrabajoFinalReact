@@ -1,14 +1,10 @@
 import React,{useEffect,useState} from "react";
 import "../NavBar/NavBar.css"
-import { useParams } from "react-router-dom";
 import ItemDetails from "../ItemDetails/ItemDetails";
 import logo from "../NavBar/rose.png"
 
 export default function ItemDetailsContainer(){
     
-    const {id}=useParams()
-
-    const [detalle, setDetalle] = useState("")
 
     const [info, setInfo] = useState(true)
     const mensaje = "Cargando..."
@@ -16,7 +12,6 @@ export default function ItemDetailsContainer(){
     useEffect(()=>{
         const prodPromise = new Promise((resolve,reject)=>{
             setTimeout(() => {
-                setDetalle(id)
                 setInfo(false)
                 resolve(true)
             }, 1000);
@@ -40,7 +35,7 @@ export default function ItemDetailsContainer(){
                     <p className="ItemTitle-center">{mensaje}</p>
                 </>
                 ) : (
-                    <ItemDetails id={detalle}/>
+                    <ItemDetails />
                 )}
             </>
         )

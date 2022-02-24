@@ -4,8 +4,12 @@ import "./ItemDetails.css"
 import logo from "../NavBar/rose.png"
 import baseDeDatos from "../ItemListContainer/productos.json"
 import ItemCount from "../ItemCount/ItemCount"
+import { useParams } from "react-router-dom";
 
-export default function ItemDetails({id}){
+export default function ItemDetails(){
+
+    const {id}=useParams()
+
     return(
         <div>
             <div>
@@ -25,7 +29,7 @@ export default function ItemDetails({id}){
                     <p>{baseDeDatos[id].descriptionExtra}</p>
                     <p className="ItemPriceDetail">$ {baseDeDatos[id].precioUnidad}</p>
                     <div className="ItemCount">
-                        <ItemCount numberStock={baseDeDatos[id].stock} initial={1} keyId={baseDeDatos[id].id}/>
+                        <ItemCount numberStock={baseDeDatos[id].stock} initial={1} keyId={baseDeDatos[id].id} precio={baseDeDatos[id].precioUnidad}/>
                     </div>
                 </div>
             </div>

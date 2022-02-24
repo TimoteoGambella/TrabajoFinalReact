@@ -6,6 +6,7 @@ export default function PageTienda(){
     
     window.onscroll = function() {
         var y = window.scrollY;
+        console.log(y)
         if(y>195){
             const i = document.getElementById("navBar")
             const ii = document.getElementById("Cart-fixed")

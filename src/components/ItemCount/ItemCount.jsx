@@ -1,13 +1,18 @@
 import React, {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 import "./ItemCount.css"
-import signoMas from "./mas.png"
-import signoMenos from "./menos.png"
-import baseDeDatos from "../ItemListContainer/productos.json"
 
-export default function ItemCount({initial,numberStock,keyId}){
+export default function ItemCount({initial,numberStock,keyId,precio}){
+
+    const[Btn,setBtn]=useState("AddOn")
+    const [cantidad,setCantidad]=useState(true)
     const [contador, setContador]=useState(initial)
     const [impar, setImpar]=useState(false)
     const stock = numberStock
+
+    useEffect(()=>{
+        setContador(1)
+    },[setCantidad])
 
     useEffect(()=>{
         if(contador%2===0){
@@ -17,36 +22,48 @@ export default function ItemCount({initial,numberStock,keyId}){
             setImpar(false)
         }
     },[contador])
-
+    
     const ClickSuma = ()=>{
-        if(contador<stock){
-            setContador(contador+1)
+        if(cantidad){
+            if(contador<stock){
+                setContador(contador+1)
+            }
         }
     }
     const ClickResta = ()=>{
-        if(contador>1){
-            setContador(contador-1)
+        if(cantidad){
+            if(contador>1){
+                setContador(contador-1)
+            }
         }
+    }
+    
+    const BtnAddOn=()=>{
+        const agregarCarrito = ()=>{
+            setBtn("carrito")
+            setCantidad(false)
+        }
+        return(
+            <button className="ItemButton" onClick={agregarCarrito}>AGREGAR</button>
+        )
+    }
+    const BtnCarrito=()=>{
+        return(
+            <Link to={"/CarritoFinal"}>
+                <button className="ItemButton">FINALIZAR COMPRA</button>
+            </Link>
+        )
     }
 
     return(
-        <div className='ItemCount-container' style={{border:`3px solid ${impar?"#00000026" : "#00000075"}`}}>
-            <img src={signoMenos} className='ItemCount-img' onClick={ClickResta}/>
-            <p className='ItemCount-p'>{contador}</p>
-            <img src={signoMas} className='ItemCount-img' onClick={ClickSuma}/>
-            <button className="ItemButton" onClick={
-                ()=>{
-                        console.log(`
-                            ID: ${baseDeDatos[keyId].id}
-                            NAME: ${baseDeDatos[keyId].name}
-                            DESCRIPTION: ${baseDeDatos[keyId].description}
-                            STOCK: ${baseDeDatos[keyId].stock}
-                            PRICE: ${baseDeDatos[keyId].precioUnidad}`)
-                            console.log(`
-                            CANTIDAD A COMPRAR: ${contador}
-                            VALOR TOTAL: ${contador*baseDeDatos[keyId].precioUnidad}`)
-                }
-            }>AGREGAR</button>
-        </div>
+        <>
+            {cantidad?<></>:<p>{`${contador}  x  $${precio} = $${contador*precio}`}</p>}
+            <div className='ItemCount-container' style={{border:`3px solid ${impar?"#00000026" : "#00000075"}`}}>
+                <p className='ItemCount-p cursor' onClick={ClickResta}>-</p>
+                <p className='ItemCount-p'>{contador}</p>
+                <p className='ItemCount-p cursor' onClick={ClickSuma}>+</p>
+                {Btn==="AddOn"? <BtnAddOn/>:<BtnCarrito/>}
+            </div>
+        </>
     )
 }

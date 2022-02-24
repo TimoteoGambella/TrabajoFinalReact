@@ -5,6 +5,7 @@
     text-align: center;
     justify-content: center;
     flex-wrap: wrap;
+    margin: 0 100px;
 }
 .itemContainer-prod{
     background-color: #c4e4e0;
