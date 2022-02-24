@@ -2,7 +2,6 @@ import React,{useEffect,useState} from "react";
 import "../NavBar/NavBar.css"
 import ItemDetails from "../ItemDetails/ItemDetails";
 import logo from "../NavBar/rose.png"
-
 export default function ItemDetailsContainer(){
     
 

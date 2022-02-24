@@ -1,10 +1,10 @@
 import React from "react";
 import "../NavBar/NavBar.css"
 import "./ItemDetails.css"
-import logo from "../NavBar/rose.png"
 import baseDeDatos from "../ItemListContainer/productos.json"
 import ItemCount from "../ItemCount/ItemCount"
 import { useParams } from "react-router-dom";
+import NavBar from "../NavBar/NavBar";
 
 export default function ItemDetails(){
 
@@ -13,15 +13,7 @@ export default function ItemDetails(){
     return(
         <div>
             <div>
-                <div className="cabecero" id="cabecero">
-                    <a href="/"><h1 className="tituloI">ROSÉ</h1></a>
-                    <div>
-                        <a href="/"><img src={logo} alt="LOGO"/></a>
-                        <br/>
-                        <a href="/">By Carolina</a>
-                    </div>
-                    <a href="/"><h1 className="tituloD">AROMAS</h1></a>
-                </div>
+                <NavBar/>
                 <div className="ItemContainerDetail">
                     <h1>{baseDeDatos[id].name}</h1>
                     <img src={baseDeDatos[id].img} alt={baseDeDatos[id].name}/>
