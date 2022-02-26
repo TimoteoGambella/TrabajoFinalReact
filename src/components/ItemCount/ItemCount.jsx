@@ -1,14 +1,17 @@
-import React, {useState, useEffect} from 'react';
-import { Link } from 'react-router-dom';
+import React, {useState, useEffect, useContext} from 'react';
 import "./ItemCount.css"
+import { Link } from 'react-router-dom';
+import { CartContext } from '../../Context/CartContext';
 
-export default function ItemCount({initial,numberStock,keyId,precio}){
+export default function ItemCount({initial,numberStock,precio}){
 
     const[Btn,setBtn]=useState("AddOn")
     const [cantidad,setCantidad]=useState(true)
     const [contador, setContador]=useState(initial)
     const [impar, setImpar]=useState(false)
     const stock = numberStock
+
+    const {sumaArrayCarrito,arrayCarrito} = useContext(CartContext)
 
     useEffect(()=>{
         setContador(1)
@@ -39,12 +42,17 @@ export default function ItemCount({initial,numberStock,keyId,precio}){
     }
     
     const BtnAddOn=()=>{
+        
         const agregarCarrito = ()=>{
             setBtn("carrito")
             setCantidad(false)
+            console.log("contador: ", contador)
+            sumaArrayCarrito(contador)
         }
         return(
-            <button className="ItemButton" onClick={agregarCarrito}>AGREGAR</button>
+            <>
+                <button className="ItemButton" onClick={()=>{agregarCarrito()}}>AGREGAR</button>
+            </>
         )
     }
     const BtnCarrito=()=>{

@@ -101,8 +101,28 @@
   position: fixed;
   right: 0;
   top: 0;
-  margin-right: 30px;
+  margin-right: 40px;
   margin-top: 15px;
   z-index: 1;
   width: 40px;
+}
+
+.CantidadCart{
+  margin-top: -20px;
+  margin-left: 50px;
+  background-color: #084444;
+  text-align: center;
+  color: white;
+  width: 30px;
+  border-radius: 100%;
+}
+.CantidadCart-fixed{
+  background-color: #084444;
+  text-align: center;
+  color: white;
+  width: 30px;
+  border-radius: 100%;
+  position: fixed;
+  right: 10px;
+  margin-top: -20px;
 }

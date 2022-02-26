@@ -1,12 +1,13 @@
 import React from 'react';
 import Pages from './components/pages/Pages';
+import { CartContextx } from "./Context/CartContext.jsx"
 
 function App() {
 
   return (
-    <React.Fragment>
+    <CartContextx>
         <Pages/>
-    </React.Fragment>
+    </CartContextx>
   );
 }
 

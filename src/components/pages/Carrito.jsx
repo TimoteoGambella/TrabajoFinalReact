@@ -1,7 +1,9 @@
-import React from "react";
+import React,{useContext} from "react";
+import { CartContext } from '../../Context/CartContext';
 
 export default function CarritoFinal(){
+
     return(
-        <h1>hola</h1>
+        <div>hola</div>
     )
 }

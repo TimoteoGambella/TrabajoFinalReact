@@ -1,10 +1,12 @@
-import React from "react";
+import React,{useContext} from "react";
 import "../NavBar/NavBar.css"
 import "./ItemDetails.css"
 import baseDeDatos from "../ItemListContainer/productos.json"
 import ItemCount from "../ItemCount/ItemCount"
 import { useParams } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
+
+export const DatosProducto=React.createContext()
 
 export default function ItemDetails(){
 
@@ -21,7 +23,9 @@ export default function ItemDetails(){
                     <p>{baseDeDatos[id].descriptionExtra}</p>
                     <p className="ItemPriceDetail">$ {baseDeDatos[id].precioUnidad}</p>
                     <div className="ItemCount">
-                        <ItemCount numberStock={baseDeDatos[id].stock} initial={1} keyId={baseDeDatos[id].id} precio={baseDeDatos[id].precioUnidad}/>
+                        <DatosProducto.Provider value={baseDeDatos[id]}>
+                            <ItemCount numberStock={baseDeDatos[id].stock} initial={1} keyId={baseDeDatos[id].id} precio={baseDeDatos[id].precioUnidad}/>
+                        </DatosProducto.Provider>
                     </div>
                 </div>
             </div>
