@@ -1,10 +1,11 @@
-import React,{createContext, useState} from "react";
+import React,{createContext, useContext, useState} from "react";
 import { Link } from 'react-router-dom';
 import "../NavBar/NavBar.css"
 import "./ItemDetails.css"
 import baseDeDatos from "../ItemListContainer/productos.json"
 import ItemCount from "../ItemCount/ItemCount"
 import { useParams } from "react-router-dom";
+import { CartContext } from "../../Context/CartContext";
 
 export const DatosProductos = createContext()
 
@@ -12,6 +13,11 @@ export const UseDatosProductos = (props)=>{
 
     const BtnAddOn=()=>{          
         const agregarCarrito = ()=>{
+            sumaArrayCarrito({
+                nombre:baseDeDatos[id].name,
+                cantidad:contador,
+                precioUnidad:precio
+            })
             mostrarBoton()
             setCantidad(false)
         }
@@ -37,6 +43,7 @@ export const UseDatosProductos = (props)=>{
     const {id}=useParams()
     const numberStock=baseDeDatos[id].stock
     const precio=baseDeDatos[id].precioUnidad
+    const {sumaArrayCarrito}=useContext(CartContext)
 
     const mostrarBoton=()=>{
         setBoton(BtnCarrito)

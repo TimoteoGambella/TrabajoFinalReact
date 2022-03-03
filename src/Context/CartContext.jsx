@@ -4,15 +4,13 @@ export const CartContext = createContext()
 
 export const UseCartContext = (props)=>{
 
-    const [arrayCarrito,setArrayCarrito]=useState([3,5,1])
+    const [arrayCarrito,setArrayCarrito]=useState([])
     
     const sumaArrayCarrito = (data)=>{
-        console.log(typeof(data),data)
         setArrayCarrito(
             [...arrayCarrito,data]
             )
         }
-    
     console.log(arrayCarrito)
 
     return(
