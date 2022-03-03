@@ -1,7 +1,6 @@
 import React,{useEffect,useState} from "react";
 import "../NavBar/NavBar.css"
 import ItemDetails from "../ItemDetails/ItemDetails";
-import logo from "../NavBar/rose.png"
 export default function ItemDetailsContainer(){
     
 
@@ -22,15 +21,6 @@ export default function ItemDetailsContainer(){
         return(
             <>{info ? (
                 <>
-                    <div className="cabecero" id="cabecero">
-                        <a href="/"><h1 className="tituloI">ROSÉ</h1></a>
-                        <div>
-                            <a href="/"><img src={logo} alt="LOGO"/></a>
-                            <br/>
-                            <a href="/">By Carolina</a>
-                        </div>
-                        <a href="/"><h1 className="tituloD">AROMAS</h1></a>
-                    </div>
                     <p className="ItemTitle-center">{mensaje}</p>
                 </>
                 ) : (

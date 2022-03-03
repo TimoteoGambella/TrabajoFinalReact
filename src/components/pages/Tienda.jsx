@@ -1,5 +1,4 @@
 import React from "react";
-import NavBar from "../NavBar/NavBar";
 import ItemListContainer from "../ItemListContainer/ItemList";
 
 export default function PageTienda(){
@@ -31,7 +30,6 @@ export default function PageTienda(){
 
     return(
         <React.Fragment>
-            <NavBar />
             <ItemListContainer />
         </React.Fragment>
     )

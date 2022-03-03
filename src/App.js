@@ -1,13 +1,13 @@
 import React from 'react';
 import Pages from './components/pages/Pages';
-import { CartContextx } from "./Context/CartContext.jsx"
+import { UseCartContext } from "./Context/CartContext.jsx"
 
 function App() {
 
   return (
-    <CartContextx>
+    <UseCartContext>
         <Pages/>
-    </CartContextx>
+    </UseCartContext>
   );
 }
 

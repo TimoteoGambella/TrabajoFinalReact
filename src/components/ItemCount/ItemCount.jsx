@@ -1,21 +1,11 @@
 import React, {useState, useEffect, useContext} from 'react';
 import "./ItemCount.css"
-import { Link } from 'react-router-dom';
-import { CartContext } from '../../Context/CartContext';
+import { DatosProductos } from '../ItemDetails/ItemDetails';
 
-export default function ItemCount({initial,numberStock,precio}){
+export default function ItemCount(){
 
-    const[Btn,setBtn]=useState("AddOn")
-    const [cantidad,setCantidad]=useState(true)
-    const [contador, setContador]=useState(initial)
     const [impar, setImpar]=useState(false)
-    const stock = numberStock
-
-    const {sumaArrayCarrito,arrayCarrito} = useContext(CartContext)
-
-    useEffect(()=>{
-        setContador(1)
-    },[setCantidad])
+    const {boton,cantidad,contador,setContadorFunction,numberStock,precio}=useContext(DatosProductos)
 
     useEffect(()=>{
         if(contador%2===0){
@@ -28,39 +18,17 @@ export default function ItemCount({initial,numberStock,precio}){
     
     const ClickSuma = ()=>{
         if(cantidad){
-            if(contador<stock){
-                setContador(contador+1)
+            if(contador<numberStock){
+                setContadorFunction("suma")
             }
         }
     }
     const ClickResta = ()=>{
         if(cantidad){
             if(contador>1){
-                setContador(contador-1)
+                setContadorFunction("resta")
             }
         }
-    }
-    
-    const BtnAddOn=()=>{
-        
-        const agregarCarrito = ()=>{
-            setBtn("carrito")
-            setCantidad(false)
-            console.log("contador: ", contador)
-            sumaArrayCarrito(contador)
-        }
-        return(
-            <>
-                <button className="ItemButton" onClick={()=>{agregarCarrito()}}>AGREGAR</button>
-            </>
-        )
-    }
-    const BtnCarrito=()=>{
-        return(
-            <Link to={"/CarritoFinal"}>
-                <button className="ItemButton">FINALIZAR COMPRA</button>
-            </Link>
-        )
     }
 
     return(
@@ -70,7 +38,7 @@ export default function ItemCount({initial,numberStock,precio}){
                 <p className='ItemCount-p cursor' onClick={ClickResta}>-</p>
                 <p className='ItemCount-p'>{contador}</p>
                 <p className='ItemCount-p cursor' onClick={ClickSuma}>+</p>
-                {Btn==="AddOn"? <BtnAddOn/>:<BtnCarrito/>}
+                {boton}
             </div>
         </>
     )

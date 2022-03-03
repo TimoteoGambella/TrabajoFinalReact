@@ -2,7 +2,7 @@ import React,{useState,createContext} from "react";
 
 export const CartContext = createContext()
 
-export const CartContextx = (props)=>{
+export const UseCartContext = (props)=>{
 
     const [arrayCarrito,setArrayCarrito]=useState([3,5,1])
     
@@ -16,7 +16,7 @@ export const CartContextx = (props)=>{
     console.log(arrayCarrito)
 
     return(
-        <CartContext.Provider value={{sumaArrayCarrito,arrayCarrito}}>
+        <CartContext.Provider value={{sumaArrayCarrito}}>
             {props.children}
         </CartContext.Provider>
     )
