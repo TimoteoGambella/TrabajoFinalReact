@@ -1,0 +1,7 @@
+.CartContainer{
+    background-color: rgb(161, 183, 196);
+    width: 80%;
+    margin: 50px auto;
+    border-radius: 10px;
+    min-height: 300px;
+}
