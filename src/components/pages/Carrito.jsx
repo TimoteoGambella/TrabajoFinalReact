@@ -6,6 +6,7 @@ export default function CarritoFinal(){
 
     const {arrayCarrito}=useContext(CartContext)
     console.log(arrayCarrito)
+    
     return(
         <div className="CartContainer">
             <ul>

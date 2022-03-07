@@ -6,24 +6,25 @@ import { Link } from "react-router-dom";
 export const CartContext = createContext()
 export const UseCartContext = (props)=>{
 
+    const [id,setId]=useState(0)
+    
     const BtnAddOn=()=>{          
-        const agregarCarrito = ()=>{
-            // funcion para chequear si esta el item
-            sumaArrayCarrito({
-                nombre:baseDeDatos[id].name,
-                cantidad:contador,
-                precioUnidad:precio
-            })
-            setMensajePrecio(false)
-            mostrarBoton()
-            setContCart(false)
-        }
         return(
             <>
-                <button className="ItemButton" onClick={()=>{agregarCarrito(id)}}>AGREGAR</button>
+                <button className="ItemButton" onClick={()=>{
+                    setArrayCarrito([...arrayCarrito,{
+                        nombre:baseDeDatos[id].nombre,
+                        cantidad:baseDeDatos[id].cantidad,
+                        precioUnidad:baseDeDatos[id].precioUnidad
+                    }])
+                    setMensajePrecio(false)
+                    mostrarBoton()
+                    setContCart(false)
+                }}>AGREGAR</button>
             </>
         )
     }
+    
     const BtnCarrito=()=>{
         return(
             <Link to={"/CarritoFinal"}>
@@ -31,16 +32,15 @@ export const UseCartContext = (props)=>{
             </Link>
         )
     }
-    console.log("TIMOTEO GAMBELLA")
+
     const [arrayCarrito,setArrayCarrito]=useState([])
 
     const [mensajePrecio,setMensajePrecio]=useState(true)
     const [cantidadMensajePrecio,setCantidadMensajePrecio]=useState(true)
     const [boton, setBoton]=useState(BtnAddOn)
     const [contador, setContador]=useState(1)
-    const [numberStock,setNumberStock]=useState(1)
+    const [numberStock,setNumberStock]=useState(0)
     const [precio,setPrecio]=useState(0)
-    const [id,setId]=useState(0)
     const [contCart,setContCart]=useState(true)
 
     console.log(id,contador,precio)
@@ -66,14 +66,8 @@ export const UseCartContext = (props)=>{
         }
     }
 
-    const sumaArrayCarrito = (data)=>{
-        setArrayCarrito(
-            [...arrayCarrito,data]
-            )
-        }
-
     return(
-        <CartContext.Provider value={{sumaArrayCarrito,boton,mensajePrecio,contador,setContadorFunction,numberStock,precio,numStock,contCart,cantidadMensajePrecio,arrayCarrito}}>
+        <CartContext.Provider value={{boton,mensajePrecio,contador,setContadorFunction,numberStock,precio,numStock,contCart,cantidadMensajePrecio,arrayCarrito}}>
             {props.children}
         </CartContext.Provider>
     )
