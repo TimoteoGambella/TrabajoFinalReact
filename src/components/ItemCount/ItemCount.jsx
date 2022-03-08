@@ -43,7 +43,9 @@ export default function ItemCount({boton,BtnAddOn,BtnCarrito}){
         AddItem({name:baseDeDatos[id].name,
             cantidad:cantidad,
             precio:baseDeDatos[id].precioUnidad,
-            id:baseDeDatos[id].id})
+            id:baseDeDatos[id].id,
+            stock:baseDeDatos[id].stock
+        })
     }
 
     return(
