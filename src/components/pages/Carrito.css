@@ -1,7 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
+
 .CartContainer{
     background-color: rgb(161, 183, 196);
     width: 80%;
     margin: 50px auto;
     border-radius: 10px;
     min-height: 300px;
+    display: flex;
+}
+.CartContainer-1{
+    width: 70%;
+    margin: 20px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 1.5vw;
+}
+.CartContainer-2{
+    width: 30%;
+}
+.ListaItem-line{
+    margin-top: 10px;
+    display: flex;
+}
+.ListaItem li{
+    list-style:none;
+    background-color: rgb(127, 159, 165);
+    padding: 0 10px;
+}
+.ListaItem-Name{
+    display: flex;
+    align-items: center;
+    width: 50%;
+    border-radius: 5px 0 0 5px;
+}
+.ListaItem-Cant{
+    display: flex;
+    align-items: center;
+    display: flex;
+    width: 20%;
+    justify-content: center;
+}
+.ListaItem-Cant p{
+    margin: 0 30px;
+    cursor: pointer;
+}
+.ListaItem-precio{
+    display: flex;
+    align-items: center;
+    border-radius: 0px 5px 5px 0px;
+    width: 80px;
+    text-align: center;
+}
+.ListaItem-x{
+    margin-left: 30px;
+    color: rgb(83, 13, 13);
+    cursor: pointer;
 }

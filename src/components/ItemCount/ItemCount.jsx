@@ -1,44 +1,68 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useEffect,useContext} from 'react';
 import "./ItemCount.css"
+import baseDeDatos from "../ItemListContainer/productos.json"
+import { useParams } from 'react-router-dom';
 import { CartContext } from '../../Context/CartContext';
 
-export default function ItemCount(){
+
+export default function ItemCount({boton,BtnAddOn,BtnCarrito}){
+ 
+    const {AddItem}=useContext(CartContext)
+
+    const{id}=useParams()
 
     const [impar, setImpar]=useState(false)
-    const {boton,mensajePrecio,contador,setContadorFunction,numberStock,precio,cantidadMensajePrecio}=useContext(CartContext)
+    const [cantidad,setCantidad] = useState(1)
 
-    useEffect(()=>{
-        if(contador%2===0){
-            setImpar(true)
-        }
-        if(contador%2!==0){
-            setImpar(false)
-        }
-    },[contador])
-    
-    const ClickSuma = ()=>{
-        if(mensajePrecio){
-            if(contador<numberStock){
-                setContadorFunction("suma")
-            }
+    const sumCant=()=>{
+        if(cantidad>=baseDeDatos[id].stock){
+            return
+        }else{
+            setCantidad(cantidad+1)
         }
     }
-    const ClickResta = ()=>{
-        if(mensajePrecio){
-            if(contador>1){
-                setContadorFunction("resta")
-            }
+    
+    const resCant=()=>{
+        if(cantidad===0 || cantidad===1){
+            return
+        }else{
+            setCantidad(cantidad-1)
         }
+    }
+
+    useEffect(()=>{
+        if(cantidad%2===0){
+            setImpar(true)
+        }
+        if(cantidad%2!==0){
+            setImpar(false)
+        }
+    },[cantidad])
+    
+    const handleAgregar=()=>{
+        AddItem({name:baseDeDatos[id].name,
+            cantidad:cantidad,
+            precio:baseDeDatos[id].precioUnidad,
+            id:baseDeDatos[id].id})
     }
 
     return(
         <>
-            {cantidadMensajePrecio?<></>:<p>{`${contador}  x  $${precio} = $${contador*precio}`}</p>}
+            {/* {cantidadMensajePrecio?<></>:<p>{`${contador}  x  $${precio} = $${contador*precio}`}</p>} */}
             <div className='ItemCount-container' style={{border:`3px solid ${impar?"#00000026" : "#00000075"}`}}>
-                <p className='ItemCount-p cursor' onClick={ClickResta}>-</p>
-                <p className='ItemCount-p'>{contador}</p>
-                <p className='ItemCount-p cursor' onClick={ClickSuma}>+</p>
-                {boton}
+                <p className='ItemCount-p cursor' onClick={()=>{resCant()}}>-</p>
+                <p className='ItemCount-p'>{cantidad}</p>
+                <p className='ItemCount-p cursor' onClick={()=>{sumCant()}}>+</p>
+                {boton==="BtnAddOn"
+                    ?
+                    <div onClick={()=>{handleAgregar()}}>
+                        {BtnAddOn()}
+                    </div>
+                    :
+                    <div>
+                        {BtnCarrito()}
+                    </div>
+                }
             </div>
         </>
     )
