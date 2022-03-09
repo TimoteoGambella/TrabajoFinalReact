@@ -1,10 +1,9 @@
-import React,{ useContext,useState } from "react";
+import React,{ useState } from "react";
 import "../NavBar/NavBar.css"
 import "./ItemDetails.css"
 import baseDeDatos from "../ItemListContainer/productos.json"
 import ItemCount from "../ItemCount/ItemCount"
 import { useParams } from "react-router-dom";
-import { CartContext } from "../../Context/CartContext";
 import { Link } from "react-router-dom";
 
 export default function ItemDetails(){
@@ -34,6 +33,9 @@ export default function ItemDetails(){
 
     return(
         <div>
+            <Link to={"/"}>
+                <h6 className="h6-volver">VOLVER A LA TIENDA</h6>
+            </Link>
             <div>
                 <div className="ItemContainerDetail">
                     <h1>{baseDeDatos[id].name}</h1>

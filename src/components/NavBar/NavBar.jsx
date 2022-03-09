@@ -2,19 +2,28 @@ import React from 'react';
 import './NavBar.css';
 import logo from './rose.png';
 import CartWidget from './CartWidget';
+import { Link } from "react-router-dom";
 
 export default  function NavBar(){
 
     return(
         <header>
             <div className="cabecero" id="cabecero">
-                <a href="/"><h1 className="tituloI">ROSÉ</h1></a>
+                <Link to={"/"}>
+                    <h1 className="tituloI">ROSÉ</h1>
+                </Link>
                 <div>
-                    <a href="/"><img src={logo} alt="LOGO"/></a>
+                    <Link to={"/"}>
+                        <img src={logo} alt="LOGO"/>
+                    </Link>
                     <br/>
-                    <a href="/">By Carolina</a>
+                    <Link to={"/"}>
+                        <p>By Carolina</p>
+                    </Link>
                 </div>
-                <a href="/"><h1 className="tituloD">AROMAS</h1></a>
+                <Link to={"/"}>
+                    <h1 className="tituloD">AROMAS</h1>
+                </Link>
             </div>
             <nav className="navbar navbar-expand-lg navbar-light" id='navBar'>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,11 +32,21 @@ export default  function NavBar(){
                 </button>
                 <div className="collapse navbar-collapse justify-content-around" id="navbarNavAltMarkup">
                     <div className="navbar-nav">
-                        <a className="nav-link" href="/">Inicio</a>
-                        <a className="nav-link" href="biografia.html">¿Quién soy?</a>
-                        <a className="nav-link" href="productos.html">Sobre nuestros productos</a>
-                        <a className="nav-link" href="tienda.html">Tienda</a>
-                        <a className="nav-link" href="refill.html">Refill</a>
+                        <Link to={"/"}>
+                            <p className="nav-link">Inicio</p>
+                        </Link>
+                        <Link to={"/QuienSoy"}>
+                            <p className="nav-link">¿Quién soy?</p>
+                        </Link>
+                        <Link to={"/NuestrosProd"}>
+                            <p className="nav-link">Sobre nuestros productos</p>
+                        </Link>
+                        <Link to={"/"}>
+                            <p className="nav-link">Tienda</p>
+                        </Link>
+                        <Link to={"/Refill"}>
+                            <p className="nav-link">Refill</p>
+                        </Link>
                     </div>
                 </div>
                 <CartWidget />

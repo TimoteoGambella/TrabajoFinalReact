@@ -7,6 +7,7 @@ export const UseCartContext = ({children})=>{
     const [arrayCarrito,setArrayCarrito]=useState([])
     const [cant,setCant]=useState(0)
     const [update,setUpdate]=useState(false)
+    const [precio,setPrecio]=useState(0)
 
     const AddItem = (item)=>{
         if(!isInCart(item.id)){
@@ -43,13 +44,19 @@ export const UseCartContext = ({children})=>{
     const cantidadCarrito=()=>{
         setCant(arrayCarrito.reduce((acc,prod)=>acc+prod.cantidad,0))
     }
+    
+    const precioFinal=()=>{
+        setPrecio(arrayCarrito.reduce((acc,prod)=>(acc+prod.precio*prod.cantidad),0))
+    }
+
     useEffect(()=>{
         cantidadCarrito()
+        precioFinal()
     })
 
 
     return(
-        <CartContext.Provider value={{arrayCarrito,AddItem,cantidadCarrito,borrarDelCarrito,vaciarCarrito,cant}}>
+        <CartContext.Provider value={{arrayCarrito,AddItem,cantidadCarrito,borrarDelCarrito,vaciarCarrito,cant,precio}}>
             {children}
         </CartContext.Provider>
     )
