@@ -1,10 +1,12 @@
-import React,{useState,createContext} from "react";
+import React,{useState,createContext,useEffect} from "react";
 
 export const CartContext = createContext()
 
 export const UseCartContext = ({children})=>{
 
     const [arrayCarrito,setArrayCarrito]=useState([])
+    const [cant,setCant]=useState(0)
+    const [update,setUpdate]=useState(false)
 
     const AddItem = (item)=>{
         if(!isInCart(item.id)){
@@ -17,9 +19,13 @@ export const UseCartContext = ({children})=>{
             
             if(cartAux[pos].cantidad+item.cantidad>cartAux[pos].stock){
                 alert(`NO HAY STOCK \nSTOCK DISPONIBLE:${cartAux[pos].stock}`)
-            }else{
+            }else if(cartAux[pos].cantidad+item.cantidad===0){
+                alert("NO PUEDE ELIMINAR MÁS")
+            }
+            else{
                 cartAux[pos].cantidad=cartAux[pos].cantidad+item.cantidad
                 setArrayCarrito(cartAux)
+                setUpdate(!update)
             }
         }
     }
@@ -28,18 +34,22 @@ export const UseCartContext = ({children})=>{
         setArrayCarrito(arrayCarrito.filter(prod=>prod.id !== id))
     }
 
-    // const vaciarCarrito = () => { setArrayCarrito([])}
+    const vaciarCarrito = () => { setArrayCarrito([])}
 
     const isInCart=(id)=>{
         return arrayCarrito.some((e)=>e.id===id)
     }
 
     const cantidadCarrito=()=>{
-        return arrayCarrito.reduce((acc,prod)=>acc+prod.cantidad,0)
+        setCant(arrayCarrito.reduce((acc,prod)=>acc+prod.cantidad,0))
     }
+    useEffect(()=>{
+        cantidadCarrito()
+    })
+
 
     return(
-        <CartContext.Provider value={{arrayCarrito,AddItem,cantidadCarrito,borrarDelCarrito}}>
+        <CartContext.Provider value={{arrayCarrito,AddItem,cantidadCarrito,borrarDelCarrito,vaciarCarrito,cant}}>
             {children}
         </CartContext.Provider>
     )
