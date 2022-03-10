@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
+
+.container-filtros{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 50px;
+}
+.container-filtros p{
+    margin-right: 20px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 1.5vw;
+    cursor: pointer;
+    padding: 5px;
+    color: black;
+}
+.container-filtros p:hover{
+    background-color: #084444;
+    color: #c7e5e3 !important;
+}

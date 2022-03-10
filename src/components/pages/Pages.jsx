@@ -8,6 +8,7 @@ import NavBar from "../NavBar/NavBar";
 import QuienSoy from "./QuienSoy";
 import NuestrosProd from "./NuestrosProd";
 import Refill from "./Refill";
+import Inicio from "./Inicio";
 
 export default function Pages(){
 
@@ -15,13 +16,14 @@ export default function Pages(){
             <BrowserRouter>
                 <NavBar/>
                 <Routes>
-                    <Route exact path="/" element={<PageTienda/>}/>
+                <Route exact path="/" element={<Inicio/>}/>
+                    <Route exact path="/Tienda/:categoria" element={<PageTienda/>}/>
                     <Route exact path="/Productos/:id" element={<ItemDetailsContainer/>}/>
                     <Route exact path="/CarritoFinal" element={<CarritoFinal/>}/>
-                    <Route exact path="*" element={<NotFound/>}/>
                     <Route exact path="/QuienSoy" element={<QuienSoy/>}/>
                     <Route exact path="/NuestrosProd" element={<NuestrosProd/>}/>
                     <Route exact path="/Refill" element={<Refill/>}/>
+                    <Route exact path="*" element={<NotFound/>}/>
                 </Routes>
             </BrowserRouter>
     )

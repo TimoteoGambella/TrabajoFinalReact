@@ -1,21 +1,22 @@
 import React, {useState, useEffect,useContext} from 'react';
 import "./ItemCount.css"
-import baseDeDatos from "../ItemListContainer/productos.json"
 import { useParams } from 'react-router-dom';
 import { CartContext } from '../../Context/CartContext';
 
 
 export default function ItemCount({boton,BtnAddOn,BtnCarrito}){
  
-    const {AddItem}=useContext(CartContext)
+    const {AddItem,productos}=useContext(CartContext)
 
     const{id}=useParams()
+    const listaProducto=productos.filter(prod=>prod.id === id)
+
 
     const [impar, setImpar]=useState(false)
     const [cantidad,setCantidad] = useState(1)
 
     const sumCant=()=>{
-        if(cantidad>=baseDeDatos[id].stock){
+        if(cantidad>=listaProducto[0].Stock){
             return
         }else{
             setCantidad(cantidad+1)
@@ -40,11 +41,11 @@ export default function ItemCount({boton,BtnAddOn,BtnCarrito}){
     },[cantidad])
     
     const handleAgregar=()=>{
-        AddItem({name:baseDeDatos[id].name,
+        AddItem({nombre:listaProducto[0].Nombre,
             cantidad:cantidad,
-            precio:baseDeDatos[id].precioUnidad,
-            id:baseDeDatos[id].id,
-            stock:baseDeDatos[id].stock
+            precio:listaProducto[0].Precio,
+            id:listaProducto[0].id,
+            stock:listaProducto[0].Stock
         })
     }
 

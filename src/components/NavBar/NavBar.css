@@ -6,6 +6,7 @@
     align-items: center;
     height: 15vw;
     background-size: contain;
+    margin-bottom: 10px;
   }
   
   .cabecero img {
@@ -83,6 +84,10 @@
   margin-right: 30px;
   margin-top: -22px;
   width: 40px;
+  position: absolute;
+  right: 0;
+  margin-right: 50px;
+  z-index: 1;
 }
 
 .navbar-fixed{
@@ -101,20 +106,22 @@
   position: fixed;
   right: 0;
   top: 0;
-  margin-right: 40px;
+  margin-right: 50px;
   margin-top: 15px;
   z-index: 1;
   width: 40px;
 }
 
 .CantidadCart{
-  margin-top: -20px;
-  margin-left: 50px;
   background-color: #084444;
   text-align: center;
   color: white;
   width: 30px;
   border-radius: 100%;
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+  z-index: 1;
 }
 .CantidadCart-fixed{
   background-color: #084444;
@@ -124,5 +131,9 @@
   border-radius: 100%;
   position: fixed;
   right: 10px;
-  margin-top: -20px;
+  margin-top: -35px;
+}
+.navbar-collapse{
+  position: absolute;
+  width: 100%;
 }

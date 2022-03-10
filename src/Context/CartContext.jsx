@@ -1,4 +1,6 @@
 import React,{useState,createContext,useEffect} from "react";
+import { collection,getDocs,query,where} from "firebase/firestore";
+import { db } from "../utils/firebase";
 
 export const CartContext = createContext()
 
@@ -8,6 +10,7 @@ export const UseCartContext = ({children})=>{
     const [cant,setCant]=useState(0)
     const [update,setUpdate]=useState(false)
     const [precio,setPrecio]=useState(0)
+    const [productos, setProductos] = useState([])
 
     const AddItem = (item)=>{
         if(!isInCart(item.id)){
@@ -54,9 +57,18 @@ export const UseCartContext = ({children})=>{
         precioFinal()
     })
 
+    useEffect(()=>{
+        const getData = async()=>{
+            const q = query(collection(db,"Productos"),where("Stock",">",0))
+            const response = await getDocs(q)
+            const dataItems = response.docs.map(doc=>{return{id:doc.id,...doc.data()}})
+            setProductos(dataItems)
+        }
+        getData()
+    },[])
 
     return(
-        <CartContext.Provider value={{arrayCarrito,AddItem,cantidadCarrito,borrarDelCarrito,vaciarCarrito,cant,precio}}>
+        <CartContext.Provider value={{arrayCarrito,AddItem,cantidadCarrito,borrarDelCarrito,vaciarCarrito,cant,precio,productos}}>
             {children}
         </CartContext.Provider>
     )

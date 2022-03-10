@@ -40,9 +40,10 @@ export default function CarritoFinal(){
                         </Link>
                         :
                         arrayCarrito.map(prod=>{
+                            console.log(arrayCarrito)
                             return(
                                 <div className="ListaItem-line" key={prod.id}>
-                                    <li className="ListaItem-Name">{prod.name}</li>
+                                    <li className="ListaItem-Name">{prod.nombre}</li>
                                     <li className="ListaItem-Cant">
                                         <p onClick={()=>handleRest(prod)}>-</p>
                                         {prod.cantidad}

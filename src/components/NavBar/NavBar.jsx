@@ -41,7 +41,7 @@ export default  function NavBar(){
                         <Link to={"/NuestrosProd"}>
                             <p className="nav-link">Sobre nuestros productos</p>
                         </Link>
-                        <Link to={"/"}>
+                        <Link to={`/Tienda/${"Todo"}`}>
                             <p className="nav-link">Tienda</p>
                         </Link>
                         <Link to={"/Refill"}>
