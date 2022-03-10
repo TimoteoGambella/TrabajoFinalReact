@@ -17,6 +17,7 @@
 }
 .CartContainer-2{
     width: 30%;
+    border-left: 5px solid #489696;
 }
 .ListaItem-line{
     margin-top: 10px;

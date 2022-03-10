@@ -35,7 +35,7 @@ export default function CarritoFinal(){
             <div className="CartContainer-1">
                 <ul className="ListaItem">
                     {arrayCarrito.length===0?
-                        <Link to={"/"}>
+                        <Link to={"/"} style={{ textDecoration: 'none' }}>
                             <p className="agregarProductos">AGREGAR PRODUCTOS</p>
                         </Link>
                         :

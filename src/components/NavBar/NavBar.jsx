@@ -13,13 +13,13 @@ export default  function NavBar(){
                     <h1 className="tituloI">ROSÉ</h1>
                 </Link>
                 <div>
-                    <Link to={"/"}>
-                        <img src={logo} alt="LOGO"/>
-                    </Link>
-                    <br/>
-                    <Link to={"/"}>
-                        <p>By Carolina</p>
-                    </Link>
+                <Link to={"/"}>
+                    <img src={logo} alt="LOGO"/>
+                </Link>
+                <br/>
+                <Link to={"/"}>
+                    <p>By Carolina</p>
+                </Link>
                 </div>
                 <Link to={"/"}>
                     <h1 className="tituloD">AROMAS</h1>
@@ -32,19 +32,19 @@ export default  function NavBar(){
                 </button>
                 <div className="collapse navbar-collapse justify-content-around" id="navbarNavAltMarkup">
                     <div className="navbar-nav">
-                        <Link to={"/"}>
+                        <Link to={"/"} style={{ textDecoration: 'none' }}>
                             <p className="nav-link">Inicio</p>
                         </Link>
-                        <Link to={"/QuienSoy"}>
+                        <Link to={"/QuienSoy"} style={{ textDecoration: 'none' }}>
                             <p className="nav-link">¿Quién soy?</p>
                         </Link>
-                        <Link to={"/NuestrosProd"}>
+                        <Link to={"/NuestrosProd"} style={{ textDecoration: 'none' }}>
                             <p className="nav-link">Sobre nuestros productos</p>
                         </Link>
-                        <Link to={`/Tienda/${"Todo"}`}>
+                        <Link to={`/Tienda/${"Todo"}`} style={{ textDecoration: 'none' }}>
                             <p className="nav-link">Tienda</p>
                         </Link>
-                        <Link to={"/Refill"}>
+                        <Link to={"/Refill"} style={{ textDecoration: 'none' }}>
                             <p className="nav-link">Refill</p>
                         </Link>
                     </div>
