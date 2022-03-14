@@ -36,7 +36,7 @@ export default function ItemDetails(){
 
     return(
         <div>
-            <Link to={"/Tienda"}  style={{ textDecoration: 'none' }}>
+            <Link to={"/Tienda/Todo"}  style={{ textDecoration: 'none' }}>
                 <h6 className="h6-volver">VOLVER A LA TIENDA</h6>
             </Link>
             <div>

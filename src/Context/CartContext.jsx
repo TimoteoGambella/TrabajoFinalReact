@@ -11,6 +11,7 @@ export const UseCartContext = ({children})=>{
     const [update,setUpdate]=useState(false)
     const [precio,setPrecio]=useState(0)
     const [productos, setProductos] = useState([])
+    const [form,setForm]=useState([])
 
     const AddItem = (item)=>{
         if(!isInCart(item.id)){
@@ -52,6 +53,28 @@ export const UseCartContext = ({children})=>{
         setPrecio(arrayCarrito.reduce((acc,prod)=>(acc+prod.precio*prod.cantidad),0))
     }
 
+    const pagoFinal=()=>{
+        if(form.length===0){
+            return false
+        }else if(arrayCarrito.length===0){
+            return false
+        }else{
+            console.log(arrayCarrito)
+            const array = arrayCarrito.map(prod=>{
+                const getData = async()=>{
+                    console.log("prod",prod)
+                    const q = query(collection(db,"Productos"),where("Nombre","==",prod.nombre))
+                    const response = await getDocs(q)
+                    console.log(response.metadata)
+                }
+                getData()
+            })
+            console.log(array)
+
+            return true
+        }
+    }
+
     useEffect(()=>{
         cantidadCarrito()
         precioFinal()
@@ -66,9 +89,9 @@ export const UseCartContext = ({children})=>{
         }
         getData()
     },[])
-
+    
     return(
-        <CartContext.Provider value={{arrayCarrito,AddItem,cantidadCarrito,borrarDelCarrito,vaciarCarrito,cant,precio,productos}}>
+        <CartContext.Provider value={{arrayCarrito,AddItem,cantidadCarrito,borrarDelCarrito,vaciarCarrito,cant,precio,productos,setForm,pagoFinal}}>
             {children}
         </CartContext.Provider>
     )

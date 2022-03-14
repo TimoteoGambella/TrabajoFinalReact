@@ -1,11 +1,15 @@
-import React,{useContext} from "react";
+import React,{useContext,useState} from "react";
 import { CartContext } from "../../Context/CartContext";
 import "./Carrito.css"
 import { Link } from "react-router-dom";
+import FormularioPago from "../FormularioPago/FormularioPago";
 
 export default function CarritoFinal(){
 
-    const {arrayCarrito,borrarDelCarrito,AddItem,vaciarCarrito,precio}=useContext(CartContext)
+    const {arrayCarrito,borrarDelCarrito,AddItem,vaciarCarrito,precio,setForm,pagoFinal}=useContext(CartContext)
+
+    const [pago,setPago]=useState(true)
+    const [validarPago,setValidarPago]=useState(false)
 
 
     const handleSum=(prod)=>{
@@ -30,17 +34,35 @@ export default function CarritoFinal(){
         )
     }
 
+    const handleClick=()=>{
+        if(!pagoFinal()){
+            setPago(false)
+        }else{
+            setPago(false)
+            setValidarPago(true)
+        }
+    }
+
+
+    const onSubmit=(data)=>{
+        setForm([
+            data
+        ])
+        return(true)
+    }
+
     return(
         <div className="CartContainer">
             <div className="CartContainer-1">
                 <ul className="ListaItem">
                     {arrayCarrito.length===0?
-                        <Link to={"/"} style={{ textDecoration: 'none' }}>
-                            <p className="agregarProductos">AGREGAR PRODUCTOS</p>
-                        </Link>
+                        <div style={{width:"400px"}}>
+                            <Link to={"/Tienda/Todo"} style={{ textDecoration: 'none'}}>
+                                    <p className="agregarProductos">AGREGAR PRODUCTOS</p>
+                            </Link>
+                        </div>
                         :
                         arrayCarrito.map(prod=>{
-                            console.log(arrayCarrito)
                             return(
                                 <div className="ListaItem-line" key={prod.id}>
                                     <li className="ListaItem-Name">{prod.nombre}</li>
@@ -58,12 +80,23 @@ export default function CarritoFinal(){
                 </ul>
             </div>
             <div className="CartContainer-2">
-                <p className="vaciarCarrito" onClick={()=>{vaciarCarrito()}}>VACIAR CARRITO</p>
-                <div className="containerInfo">
-                    <p>TOTAL:</p>
-                    {precio===0?<></>:<p>$ {precio}</p>}
+                <div className="form-pay">
+                    <FormularioPago onSubmit={onSubmit}/>
                 </div>
-                <p className="botonPagar">PAGAR</p>
+                <br/>
+                <div>
+                    <p className="vaciarCarrito" onClick={()=>{vaciarCarrito()}}>VACIAR CARRITO</p>
+                    <div className="containerInfo">
+                        <p>TOTAL:</p>
+                        {precio===0?<></>:<p>$ {precio}</p>}
+                    </div>
+                    <p className="botonPagar" onClick={()=>{handleClick()}}>PAGAR</p>
+                    {pago?(<p>
+                        </p>):validarPago?
+                            <p className="validacion-pago">Pago Realizado</p>:
+                            <p className="validacion-pago">Pago Denegado</p>
+                    }
+                </div>
             </div>
         </div>
     )
