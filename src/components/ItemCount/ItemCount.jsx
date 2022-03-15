@@ -45,7 +45,6 @@ export default function ItemCount({boton,BtnAddOn,BtnCarrito}){
             cantidad:cantidad,
             precio:listaProducto[0].Precio,
             id:listaProducto[0].id,
-            stock:listaProducto[0].Stock
         })
     }
 

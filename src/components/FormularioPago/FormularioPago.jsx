@@ -8,21 +8,22 @@ export default function FormularioPago({onSubmit}){
     const [respuesta,setRespuesta]=useState(false)
     const [respuesta2,setRespuesta2]=useState(true)
     
-    const obtenerDatos= async(dat,e)=>{
-        const url=(`http://apilayer.net/api/validate?access_key=b0700b976ac4193bf0ab9a5c488cb6d8&number=${dat.CELULAR}&country_code=AR&format=1`)
-        const data = await fetch(url)
-        const data2 = await data.json()
-        if(data2.valid){
-            setRespuesta(onSubmit(dat,e))
-        }else{
-            setRespuesta2(false)
-        }
+    const obtenerDatos= async(dat)=>{
+        // const url=(`http://apilayer.net/api/validate?access_key=b0700b976ac4193bf0ab9a5c488cb6d8&number=${dat.CELULAR}&country_code=AR&format=1`)
+        // const data = await fetch(url)
+        // const data2 = await data.json()
+        // if(data2.valid){
+        //     setRespuesta(onSubmit(dat))
+        // }else{
+        //     console.log("Golasd")
+        //     setRespuesta2(false)
+        // }
+        setRespuesta(onSubmit(dat))
     }
 
-    const onSubmit2=(data,e)=>{
-        obtenerDatos(data,e)
+    const onSubmit2=(data)=>{
+        obtenerDatos(data)
     }
-
 
     return(
         <>
@@ -34,8 +35,8 @@ export default function FormularioPago({onSubmit}){
                     type="text"
                     name="NOMBRE"
                     id="NOMBRE"
+
                     placeholder="NOMBRE/APELLIDO"
-                    value={"timoteo"}
                     {...register("NOMBRE",{required:true})}
                 />
                 <span className="text-danger text-small d-block mb-2">
@@ -49,7 +50,6 @@ export default function FormularioPago({onSubmit}){
                     name="CELULAR"
                     id="CELULAR"
                     placeholder="Ej: 3489101010"
-                    value={"3487542190"}
                     {...register("CELULAR",{required:true,minLength:10,maxLength:10})}
                 />
                 <span className="text-danger text-small d-block mb-2">
@@ -65,7 +65,6 @@ export default function FormularioPago({onSubmit}){
                     name="MAIL"
                     id="MAIL"
                     placeholder="Email"
-                    value={"timi.gambella@hotmail.com"}
                     {...register("MAIL",{required:true,pattern:/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/})}
                 />
                 <span className="text-danger text-small d-block mb-2">
@@ -76,7 +75,7 @@ export default function FormularioPago({onSubmit}){
                 <span>
                     {respuesta?(<>
                         <p className="validacion-mensaje">Validacion Correcta</p>
-                    </>): respuesta2?<></>:<p className="validacion-mensaje">Validacion Incorrecta</p>
+                    </>): respuesta2?<></>:<p className="validacion-mensaje" style={{color:"red"}}>Validacion Incorrecta</p>
                     }
                 </span>
             </form>

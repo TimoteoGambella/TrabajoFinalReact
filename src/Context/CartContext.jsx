@@ -5,14 +5,15 @@ import { db } from "../utils/firebase";
 export const CartContext = createContext()
 
 export const UseCartContext = ({children})=>{
-
+    
     const [arrayCarrito,setArrayCarrito]=useState([])
     const [cant,setCant]=useState(0)
     const [update,setUpdate]=useState(false)
     const [precio,setPrecio]=useState(0)
     const [productos, setProductos] = useState([])
     const [form,setForm]=useState([])
-
+    const [productosFiltrados,setProductosFiltrados]=useState([])
+    
     const AddItem = (item)=>{
         if(!isInCart(item.id)){
             setArrayCarrito([
@@ -53,24 +54,22 @@ export const UseCartContext = ({children})=>{
         setPrecio(arrayCarrito.reduce((acc,prod)=>(acc+prod.precio*prod.cantidad),0))
     }
 
+
+    const getData=async(nombresProd)=>{
+        const q = query(collection(db,"Productos"),where("Nombre","in",nombresProd))
+        const response = await getDocs(q)
+        const resultado = response.docs.map(doc=>doc={id:doc.id,...doc.data()})
+        setProductosFiltrados(...productosFiltrados,resultado)
+    }
+
     const pagoFinal=()=>{
         if(form.length===0){
             return false
         }else if(arrayCarrito.length===0){
             return false
         }else{
-            console.log(arrayCarrito)
-            const array = arrayCarrito.map(prod=>{
-                const getData = async()=>{
-                    console.log("prod",prod)
-                    const q = query(collection(db,"Productos"),where("Nombre","==",prod.nombre))
-                    const response = await getDocs(q)
-                    console.log(response.metadata)
-                }
-                getData()
-            })
-            console.log(array)
-
+            const nombreProductos=arrayCarrito.map((prod)=>prod.nombre)
+            getData(nombreProductos)
             return true
         }
     }
@@ -91,7 +90,7 @@ export const UseCartContext = ({children})=>{
     },[])
     
     return(
-        <CartContext.Provider value={{arrayCarrito,AddItem,cantidadCarrito,borrarDelCarrito,vaciarCarrito,cant,precio,productos,setForm,pagoFinal}}>
+        <CartContext.Provider value={{arrayCarrito,AddItem,cantidadCarrito,borrarDelCarrito,vaciarCarrito,cant,precio,productos,setForm,form,pagoFinal,productosFiltrados}}>
             {children}
         </CartContext.Provider>
     )
