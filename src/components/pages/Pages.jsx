@@ -9,6 +9,7 @@ import QuienSoy from "./QuienSoy";
 import NuestrosProd from "./NuestrosProd";
 import Refill from "./Refill";
 import Inicio from "./Inicio";
+import ConfirmacionPago from "./ConfirmacionPago";
 
 export default function Pages(){
 
@@ -23,6 +24,7 @@ export default function Pages(){
                     <Route exact path="/QuienSoy" element={<QuienSoy/>}/>
                     <Route exact path="/NuestrosProd" element={<NuestrosProd/>}/>
                     <Route exact path="/Refill" element={<Refill/>}/>
+                    <Route exact path="/CompraRealizada" element={<ConfirmacionPago/>}/>
                     <Route exact path="*" element={<NotFound/>}/>
                 </Routes>
             </BrowserRouter>

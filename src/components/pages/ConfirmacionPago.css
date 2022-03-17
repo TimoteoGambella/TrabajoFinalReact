@@ -1,0 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
+
+
+.container-confirmarPago{
+    text-align: center;
+    margin: 50px;
+    font-size: 5vw;
+    font-family: "Montserrat", sans-serif;
+
+}

@@ -13,7 +13,8 @@ export const UseCartContext = ({children})=>{
     const [productos, setProductos] = useState([])
     const [form,setForm]=useState([])
     const [productosFiltrados,setProductosFiltrados]=useState([])
-    
+    const [pagoTerminado,setPagoTerminado]=useState("")
+
     const AddItem = (item)=>{
         if(!isInCart(item.id)){
             setArrayCarrito([
@@ -41,6 +42,8 @@ export const UseCartContext = ({children})=>{
     }
 
     const vaciarCarrito = () => { setArrayCarrito([])}
+
+    const vaciarForm=()=>{setForm([])}
 
     const isInCart=(id)=>{
         return arrayCarrito.some((e)=>e.id===id)
@@ -90,7 +93,7 @@ export const UseCartContext = ({children})=>{
     },[])
     
     return(
-        <CartContext.Provider value={{arrayCarrito,AddItem,cantidadCarrito,borrarDelCarrito,vaciarCarrito,cant,precio,productos,setForm,form,pagoFinal,productosFiltrados}}>
+        <CartContext.Provider value={{arrayCarrito,AddItem,cantidadCarrito,borrarDelCarrito,vaciarCarrito,vaciarForm,cant,precio,productos,setForm,form,pagoFinal,productosFiltrados,pagoTerminado,setPagoTerminado}}>
             {children}
         </CartContext.Provider>
     )

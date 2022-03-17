@@ -1,23 +1,22 @@
 import React,{useContext,useState,useEffect} from "react";
 import { CartContext } from "../../Context/CartContext";
 import "./Carrito.css"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import FormularioPago from "../FormularioPago/FormularioPago";
-import { Timestamp,collection, addDoc,doc, updateDoc, getDoc, increment } from "firebase/firestore";
+import { Timestamp,collection, addDoc,doc, updateDoc, increment } from "firebase/firestore";
 import { db } from "../../utils/firebase";
-import { async } from "@firebase/util";
-
 
 export default function CarritoFinal(){
 
-    const {arrayCarrito,borrarDelCarrito,AddItem,vaciarCarrito,precio,setForm,form,pagoFinal,productosFiltrados}=useContext(CartContext)
+    const {arrayCarrito,borrarDelCarrito,AddItem,vaciarCarrito,vaciarForm,precio,setForm,form,pagoFinal,productosFiltrados,setPagoTerminado}=useContext(CartContext)
 
     const [pago,setPago]=useState(true)
     const [validarPago,setValidarPago]=useState(true)
     const [mensajeStock,setMensajestock]=useState("")
     const [pagoBloqueado,setPagoBloqueado]=useState(false)
-    const [pagoTerminado,setPagoTerminado]=useState("")
     const [mensajeConfirmacion,setMensajeConfirmacion]=useState("Cargando ...")
+
+    const navigate = useNavigate()
 
     const handleSum=(prod)=>{
         AddItem(
@@ -71,7 +70,6 @@ export default function CarritoFinal(){
                 }
                 sendOrder()
                 setPagoBloqueado(true)
-                setMensajeConfirmacion("Pago Realizado")
 
                 const updateStock=async()=>{
                     const items = arrayCarrito.map((prod)=>{
@@ -82,6 +80,9 @@ export default function CarritoFinal(){
                         })
                     }
                 updateStock()
+                vaciarForm()
+                vaciarCarrito()
+                navigate("/CompraRealizada",{replace:true})
 
             }else{
                 setMensajestock("Se termino el stock de un producto")
@@ -151,23 +152,19 @@ export default function CarritoFinal(){
                         {precio===0?<></>:<p>$ {precio}</p>}
                     </div>
                     {pagoBloqueado===false?
-                    <>
-                        <p className="botonPagar" onClick={()=>{handleClick()}}>PAGAR</p>
-                        {pago?(<p>
-                            </p>):validarPago?
-                                <p className="validacion-pago">{mensajeConfirmacion}</p>:
-                                <p className="validacion-pago" style={{color:"red"}}>Pago Denegado</p>
-                        }
-                        <p className="validacion-pago" style={{color:"red"}}>{mensajeStock}</p>
-                    </>:
-                    <>
-                        <p className="botonPagar" style={{background:"#315252"}}>PAGAR</p>
-                        <p className="validacion-pago">{mensajeConfirmacion}</p>
-                        <div className="container-numPedido">
-                            <p>NUMERO DE PEDIDO</p>
-                            <p className="container-numero">{pagoTerminado}</p>
-                        </div>
-                    </>}
+                        <>
+                            <p className="botonPagar" onClick={()=>{handleClick()}}>PAGAR</p>
+                            {pago?(<p>
+                                </p>):validarPago?
+                                    <p className="validacion-pago">{mensajeConfirmacion}</p>:
+                                    <p className="validacion-pago" style={{color:"red"}}>Pago Denegado</p>
+                            }
+                            <p className="validacion-pago" style={{color:"red"}}>{mensajeStock}</p>
+                        </>:
+                        <>
+                            <p className="botonPagar" style={{background:"#315252"}}>PAGAR</p>
+                        </>
+                    }
                 </div>
             </div>
         </div>
