@@ -17,6 +17,7 @@ export const UseCartContext = ({children})=>{
 
     const AddItem = (item)=>{
         if(!isInCart(item.id)){
+            console.log("ohoosa")
             setArrayCarrito([
                 ...arrayCarrito,item
             ])

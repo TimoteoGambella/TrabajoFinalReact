@@ -19,19 +19,20 @@ export default function CarritoFinal(){
     const navigate = useNavigate()
 
     const handleSum=(prod)=>{
+        console.log(prod.nombre)
         AddItem(
-            {name:prod.name,
+            {   nombre:prod.nombre,
                 cantidad:1,
                 precio:prod.precioUnidad,
                 id:prod.id,
                 stock:prod.stock
             }
         )
-
     }
+
     const handleRest=(prod)=>{
         AddItem(
-            {name:prod.name,
+            {   nombre:prod.nombre,
                 cantidad:-1,
                 precio:prod.precioUnidad,
                 id:prod.id,

@@ -15,6 +15,7 @@ export default function ItemCount({boton,BtnAddOn,BtnCarrito}){
     const [impar, setImpar]=useState(false)
     const [cantidad,setCantidad] = useState(1)
 
+
     const sumCant=()=>{
         if(cantidad>=listaProducto[0].Stock){
             return
@@ -45,6 +46,7 @@ export default function ItemCount({boton,BtnAddOn,BtnCarrito}){
             cantidad:cantidad,
             precio:listaProducto[0].Precio,
             id:listaProducto[0].id,
+            stock:listaProducto[0].Stock
         })
     }
 
