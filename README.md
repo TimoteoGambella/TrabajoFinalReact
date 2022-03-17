@@ -2,4 +2,4 @@
 
 Este proyecto fue realizado con React.js
 
-![This is a alt text.](/src/gif.gif “This is a sample image.”)
+![Gif del carrito](https://github.com/TimoteoGambella/TrabajoFinalReact/blob/main/gif.gif?raw=true “Gif del carrito”)
